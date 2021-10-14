@@ -1,6 +1,6 @@
-const player1 = {
+let player1 = {
     name: 'Scorpion',
-    hp: 50,
+    hp: 40,
     img: 'http://reactmarathon-api.herokuapp.com/assets/scorpion.gif',
     weapon: ['sword'],
     attack: function() {
@@ -9,9 +9,11 @@ const player1 = {
 
 };
 
-const player2 = {
+player1.attack();
+
+let player2 = {
     name: 'Subzero',
-    hp: 80,
+    hp: 100,
     img: 'http://reactmarathon-api.herokuapp.com/assets/subzero.gif',
     weapon: ['sword'],
     attack: function() {
@@ -20,26 +22,33 @@ const player2 = {
 
 };
 
-function createPlayer(player, name, hp) {
-    const $player1 = document.createElement('div');
-    $player1.classList.add('player1');
+player2.attack();
 
-    const $progressbar = document.createElement('div');
+
+function createPlayer(player, namePlayer, hp) {
+    let $player1 = document.createElement('div');
+    $player1.classList.add(player);
+
+    let $progressbar = document.createElement('div');
     $progressbar.classList.add('progressbar');
 
-    const $life = document.createElement('div');
+    let $life = document.createElement('div');
     $life.classList.add('life');
-    $life.style.width = '100%';
+    $life.style.width = player.hp + '%';
 
-    const $name = document.createElement('div');
+    let $name = document.createElement('div');
     $name.classList.add('name');
-    $name.innerText = player1.name;
+    $name.innerText = namePlayer.name;
 
-    const $character = document.createElement('div');
+
+    let $character = document.createElement('div');
     $character.classList.add('character');
 
-    const $img = document.createElement('div');
-    $img.src = player1.img;
+    let $img = document.createElement('img');
+    $img.src = namePlayer.img;
+
+    let $arenas = document.querySelector('.arenas');
+    $arenas.appendChild($player1);
 
     $player1.appendChild($progressbar);
     $player1.appendChild($character);
@@ -47,12 +56,12 @@ function createPlayer(player, name, hp) {
     $progressbar.appendChild($name);
     $character.appendChild($img);
 
-    const $arenas = document.querySelector('.arenas');
-    $arenas.appendChild($player);
+    
+};
+    createPlayer('player1', player1);
+    createPlayer('player2', player2);
 
-    createPlayer('player1', 'Scorpion', 50);
-    createPlayer('player2', 'Subzero', 80);
-
+    
     
 
 
@@ -63,4 +72,3 @@ function createPlayer(player, name, hp) {
 
 
     
-}

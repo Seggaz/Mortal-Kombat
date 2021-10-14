@@ -186,6 +186,10 @@ body {
     left: 60px;
 }
 
+.player1 .character img {
+    transform: scaleX(1);
+}
+
 .player2 .character {
     right: 60px;
 }
@@ -193,6 +197,7 @@ body {
 .player2 .character img {
     transform: scaleX(-1);
 }
+
 
 .character img {
     height: 100%;
